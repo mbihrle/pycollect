@@ -5,6 +5,7 @@ import tkinter
 
 import greet
 import scrape
+import automation
 
 
 def start_control_center():
@@ -35,6 +36,11 @@ class ControlCenter:
         lbl_scrape_hacker_news = ttk.Label(
             mainframe, text='Top Votings der Seite Hacker News\nwerden im Terminal ausgegeben')
 
+        btn_automation_test = ttk.Button(
+            mainframe, text='Test Selenium', command=self.call_automation_test)
+        lbl_automation_test = ttk.Label(
+            mainframe, text='Selenium/Automation testen')
+
         btn_quit = ttk.Button(mainframe, text='Beenden',
                               command=self.destroy_control_center)
 
@@ -42,6 +48,9 @@ class ControlCenter:
         btn_quit.grid(column=0, row=100)
         btn_scrape_hacker_news.grid(column=0, row=0)
         lbl_scrape_hacker_news.grid(column=1, row=0)
+
+        btn_automation_test.grid(column=0, row=1)
+        lbl_automation_test.grid(column=1, row=1)
 
         btn_greet_simple.grid(column=2, row=0)
         lbl_greet_simple.grid(column=4, row=0)
@@ -84,6 +93,9 @@ class ControlCenter:
 
     def call_scrape(self):
         scrape.main()
+
+    def call_automation_test(self):
+        automation.selenium_test()
 
 
 start_control_center()
